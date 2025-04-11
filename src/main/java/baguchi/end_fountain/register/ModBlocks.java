@@ -1,6 +1,6 @@
 package baguchi.end_fountain.register;
 
-import baguchi.end_fountain.EndFountain;
+import baguchi.end_fountain.FountainOfEnd;
 import baguchi.end_fountain.block.FountainOfEndBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -16,9 +16,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModBlocks {
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(EndFountain.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(FountainOfEnd.MODID);
 
-    public static final DeferredBlock<Block> FOUNTAIN_OF_END = noItemRegister("fountain_of_end", () -> new FountainOfEndBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).replaceable().noCollission().strength(100.0F).noLootTable().sound(SoundType.NETHERRACK)));
+    public static final DeferredBlock<Block> FOUNTAIN_OF_END = register("fountain_of_end", () -> new FountainOfEndBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).replaceable().noCollission().strength(100.0F).noLootTable().sound(SoundType.NETHERRACK)));
 
 
     private static <T extends Block> DeferredBlock<T> baseRegister(String name, Supplier<? extends T> block, Function<DeferredBlock<T>, Supplier<? extends Item>> item) {
