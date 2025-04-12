@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "fountain_of_end:item/fountain_of_end"
-  }
-}
