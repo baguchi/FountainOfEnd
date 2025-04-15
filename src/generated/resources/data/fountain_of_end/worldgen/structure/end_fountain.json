@@ -6,7 +6,7 @@
   "size": 6,
   "spawn_overrides": {},
   "start_height": {
-    "absolute": -2
+    "absolute": 2
   },
   "start_pool": "fountain_of_end:end_fountain/main",
   "step": "surface_structures",
