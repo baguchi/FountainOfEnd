@@ -28,5 +28,6 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new ItemModelGenerator(packOutput, existingFileHelper));
         BlockTagsProvider blocktags = new BlockTagGenerator(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blocktags);
+        generator.addProvider(event.includeServer(), new BiomeTagGenerator(packOutput, lookupProvider, existingFileHelper));
     }
 }

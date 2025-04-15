@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 142326620,
+    "separation": 6,
+    "spacing": 32
+  },
+  "structures": [
+    {
+      "structure": "fountain_of_end:end_fountain",
+      "weight": 1
+    }
+  ]
+}

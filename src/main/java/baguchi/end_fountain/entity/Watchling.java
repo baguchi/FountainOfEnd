@@ -1,6 +1,7 @@
 package baguchi.end_fountain.entity;
 
 import bagu_chan.bagus_lib.entity.goal.AnimateAttackGoal;
+import baguchi.end_fountain.register.ModSounds;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,18 +15,17 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
-public class Watchling extends EnderMan {
+public class Watchling extends Enderling {
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState attackAnimationState = new AnimationState();
 
@@ -37,20 +37,32 @@ public class Watchling extends EnderMan {
         super(entityType, level);
     }
 
+    @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new AnimateAttackGoal(this, (double) 1.0F, this.attackAnimationActionPoint, this.attackAnimationLength));
+        this.goalSelector.addGoal(2, new AnimateAttackGoal(this, (double) 1.0F, this.attackAnimationActionPoint, this.attackAnimationLength) {
+            @Override
+            protected void doAttack(LivingEntity living) {
+                super.doAttack(living);
+                playSound(ModSounds.WATCHLING_ATTACK.get());
+            }
+        });
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, (double) 1.0F, 0.0F));
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new EndermanLookForPlayerGoal(this, this::isAngryAt));
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this, new Class[0]));
+        this.targetSelector.addGoal(2, new HurtByTargetGoal(this, Enderling.class).setAlertOthers());
         this.targetSelector.addGoal(3, new ResetUniversalAngerTargetGoal(this, false));
     }
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, (double) 20.0F).add(Attributes.MOVEMENT_SPEED, (double) 0.24F).add(Attributes.ATTACK_DAMAGE, (double) 4.0F).add(Attributes.FOLLOW_RANGE, (double) 24.0F).add(Attributes.STEP_HEIGHT, (double) 1.0F);
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, (double) 20.0F).add(Attributes.MOVEMENT_SPEED, (double) 0.24F).add(Attributes.ATTACK_DAMAGE, (double) 4.0F).add(Attributes.FOLLOW_RANGE, (double) 18.0F).add(Attributes.STEP_HEIGHT, (double) 1.0F);
+    }
+
+    @Override
+    public void playAttackSound() {
+        this.playSound(ModSounds.WATCHLING_ATTACK.get(), 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
     }
 
     @Override
@@ -78,9 +90,9 @@ public class Watchling extends EnderMan {
         }
     }
 
-    boolean isLookingAtMe(Player player) {
+    public boolean isLookingAtMe(Player player) {
         ItemStack itemstack = (ItemStack) player.getInventory().armor.get(3);
-        if (CommonHooks.shouldSuppressEnderManAnger(this, player, itemstack)) {
+        if (itemstack.getItem() == Blocks.CARVED_PUMPKIN.asItem()) {
             return false;
         } else {
             Vec3 vec3 = player.getViewVector(1.0F).normalize();
@@ -88,11 +100,8 @@ public class Watchling extends EnderMan {
             double d0 = vec31.length();
             vec31 = vec31.normalize();
             double d1 = vec3.dot(vec31);
-            return d1 > (double) 1.0F - 0.05 / d0 ? player.hasLineOfSight(this) : false;
+            return d1 > (double) 1.0F - 0.025 / d0 ? player.hasLineOfSight(this) : false;
         }
-    }
-
-    public void playStareSound() {
     }
 
     static class EndermanLookForPlayerGoal extends NearestAttackableTargetGoal<Player> {
@@ -120,7 +129,6 @@ public class Watchling extends EnderMan {
         public void start() {
             this.aggroTime = this.adjustedTickDelay(5);
             this.teleportTime = 0;
-            this.enderman.setBeingStaredAt();
         }
 
         public void stop() {

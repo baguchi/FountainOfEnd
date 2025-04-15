@@ -3,13 +3,10 @@ package baguchi.end_fountain;
 import baguchi.end_fountain.register.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 import java.util.Locale;
 
@@ -32,13 +29,14 @@ public class FountainOfEnd
         ModBlocks.BLOCKS.register(modEventBus);
 
         ModItems.ITEMS.register(modEventBus);
+        ModSounds.SOUND_EVENTS.register(modEventBus);
         ModBlockEntitys.BLOCK_ENTITIES.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        ModAttachments.ATTACHMENT_TYPES.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (EndFountain) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -52,13 +50,6 @@ public class FountainOfEnd
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
     {
 
     }

@@ -2,5 +2,17 @@
   "itemGroup.fountain_of_end": "Fountain Of End",
   "block.fountain_of_end.fountain_of_end": "Fountain Of End",
   "item.fountain_of_end.void_bucket": "Void Bucket",
-  "item.fountain_of_end.watchling_spawn_egg": "Watchling SpawnEgg"
+  "item.fountain_of_end.watchling_spawn_egg": "Watchling SpawnEgg",
+  "item.fountain_of_end.snareling_spawn_egg": "Snareling SpawnEgg",
+  "entity.fountain_of_end.watchling": "Watchling",
+  "entity.fountain_of_end.snareling": "Snareling",
+  "entity.fountain_of_end.snare_ball": "Snare Ball",
+  "entity.fountain_of_end.snare_web": "Snare Web",
+  "subtitles.mob.watchling_idle": "Watchling Idle",
+  "subtitles.mob.watchling_hurt": "Watchling Hurt",
+  "subtitles.mob.watchling_death": "Watchling Death",
+  "subtitles.mob.watchling_attack": "Watchling Attack",
+  "subtitles.mob.snareling_idle": "Snareling Idle",
+  "subtitles.mob.snareling_hurt": "Snareling Hurt",
+  "subtitles.mob.snareling_death": "Snareling Death"
 }

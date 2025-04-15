@@ -4,6 +4,7 @@ import baguchi.end_fountain.blockentity.FountainOfEndBlockEntity;
 import baguchi.end_fountain.blockentity.SpawnDataWeight;
 import baguchi.end_fountain.register.ModBlockEntitys;
 import baguchi.end_fountain.register.ModEntities;
+import baguchi.end_fountain.util.EnderlingUtil;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,6 +14,7 @@ import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -43,6 +46,10 @@ public class FountainOfEndBlock extends BaseEntityBlock {
         this.xpRange = UniformInt.of(100, 120);
     }
 
+    @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
+    }
 
     protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
@@ -66,8 +73,9 @@ public class FountainOfEndBlock extends BaseEntityBlock {
         if (level.getBlockEntity(pos) instanceof FountainOfEndBlockEntity spawnerblockentity) {
             List<SpawnDataWeight> list = new ArrayList<>();
 
-            putEntity(list, EntityType.ENDERMITE, 10);
-            putEntity(list, ModEntities.WATCHLING.get(), 3);
+            putEntity(list, EntityType.ENDERMITE, 1);
+            putEntity(list, ModEntities.WATCHLING.get(), 5);
+            putEntity(list, ModEntities.SNARELING.get(), 3);
 
             spawnerblockentity.getSpawner().setEntityIds(list);
             spawnerblockentity.setChanged();
@@ -84,9 +92,17 @@ public class FountainOfEndBlock extends BaseEntityBlock {
         return spawnDataWeights;
     }
 
+    @Override
     protected void spawnAfterBreak(BlockState state, ServerLevel level, BlockPos pos, ItemStack stack, boolean dropExperience) {
         super.spawnAfterBreak(state, level, pos, stack, dropExperience);
     }
+
+    @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        EnderlingUtil.angerNearbyEnderling(player, false);
+        return super.playerWillDestroy(level, pos, state, player);
+    }
+
 
     public int getExpDrop(BlockState state, LevelAccessor level, BlockPos pos, @Nullable BlockEntity blockEntity, @Nullable Entity breaker, ItemStack tool) {
         return this.xpRange.sample(level.getRandom());

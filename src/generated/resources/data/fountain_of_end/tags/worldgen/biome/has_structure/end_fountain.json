@@ -1,0 +1,8 @@
+{
+  "remove": [
+    "#c:is_underground"
+  ],
+  "values": [
+    "#c:is_overworld"
+  ]
+}

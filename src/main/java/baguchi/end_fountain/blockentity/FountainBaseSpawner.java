@@ -43,14 +43,14 @@ public abstract class FountainBaseSpawner implements IOwnedSpawner {
     private SpawnData nextSpawnData;
     private double spin;
     private double oSpin;
-    private int minSpawnDelay = 200;
+    private int minSpawnDelay = 400;
     private int maxSpawnDelay = 600;
-    private int spawnCount = 4;
+    private int spawnCount = 24;
     @Nullable
     private Entity displayEntity;
     private int maxNearbyEntities = 6;
-    private int requiredPlayerRange = 16;
-    private int spawnRange = 5;
+    private int requiredPlayerRange = 20;
+    private int spawnRange = 10;
 
     public FountainBaseSpawner() {
     }

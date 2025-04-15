@@ -129,6 +129,20 @@ public class WatchlingModel<T extends Watchling> extends HierarchicalModel<T> {
         this.eye_lid_l5.setPos(Mth.clamp(-((netHeadYaw - f + 180) % 360 - 180) / 90, -0.75F, 0.75F), 0, 0.11F);
         this.eye_lid_r4.setPos(Mth.clamp(-((netHeadYaw - f + 180) % 360 - 180) / 90, -0.75F, 0.75F), 0, 0.11F);
 
+        if (this.riding) {
+            this.RightArm.xRot = (float) (-Math.PI / 5);
+            this.RightArm.yRot = 0.0F;
+            this.RightArm.zRot = 0.0F;
+            this.LeftArm.xRot = (float) (-Math.PI / 5);
+            this.LeftArm.yRot = 0.0F;
+            this.LeftArm.zRot = 0.0F;
+            this.RightLeg.xRot = -1.4137167F;
+            this.RightLeg.yRot = (float) (Math.PI / 10);
+            this.RightLeg.zRot = 0.07853982F;
+            this.LeftLeg.xRot = -1.4137167F;
+            this.LeftLeg.yRot = (float) (-Math.PI / 10);
+            this.LeftLeg.zRot = -0.07853982F;
+        }
 
         if (entity.attackAnimationState.isStarted()) {
             this.RightArm.xRot = 0;

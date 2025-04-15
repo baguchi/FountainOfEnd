@@ -1,0 +1,68 @@
+{
+  "entity.watchling.ambient": {
+    "sounds": [
+      "fountain_of_end:mob/watchling/endling_idle_1",
+      "fountain_of_end:mob/watchling/endling_idle_2",
+      "fountain_of_end:mob/watchling/endling_idle_3",
+      "fountain_of_end:mob/watchling/endling_idle_4"
+    ],
+    "subtitle": "subtitles.mob.watchling_idle"
+  },
+  "entity.watchling.hurt": {
+    "sounds": [
+      "fountain_of_end:mob/watchling/endling_hurt_1",
+      "fountain_of_end:mob/watchling/endling_hurt_2",
+      "fountain_of_end:mob/watchling/endling_hurt_3"
+    ],
+    "subtitle": "subtitles.mob.watchling_hurt"
+  },
+  "entity.watchling.death": {
+    "sounds": [
+      "fountain_of_end:mob/watchling/endling_death_1",
+      "fountain_of_end:mob/watchling/endling_death_2",
+      "fountain_of_end:mob/watchling/endling_death_3",
+      "fountain_of_end:mob/watchling/endling_death_4"
+    ],
+    "subtitle": "subtitles.mob.watchling_death"
+  },
+  "entity.watchling.attack": {
+    "sounds": [
+      "fountain_of_end:mob/watchling/endling_attack_1",
+      "fountain_of_end:mob/watchling/endling_attack_2",
+      "fountain_of_end:mob/watchling/endling_attack_3",
+      "fountain_of_end:mob/watchling/endling_attack_4",
+      "fountain_of_end:mob/watchling/endling_attack_5",
+      "fountain_of_end:mob/watchling/endling_attack_6"
+    ],
+    "subtitle": "subtitles.mob.watchling_attack"
+  },
+  "entity.snareling.ambient": {
+    "sounds": [
+      "fountain_of_end:mob/snareling/snareling_idle_1",
+      "fountain_of_end:mob/snareling/snareling_idle_2",
+      "fountain_of_end:mob/snareling/snareling_idle_3",
+      "fountain_of_end:mob/snareling/snareling_idle_4"
+    ],
+    "subtitle": "subtitles.mob.snareling_idle"
+  },
+  "entity.snareling.hurt": {
+    "sounds": [
+      "fountain_of_end:mob/snareling/snareling_hurt_1",
+      "fountain_of_end:mob/snareling/snareling_hurt_2",
+      "fountain_of_end:mob/snareling/snareling_hurt_3",
+      "fountain_of_end:mob/snareling/snareling_hurt_4",
+      "fountain_of_end:mob/snareling/snareling_hurt_5",
+      "fountain_of_end:mob/snareling/snareling_hurt_6"
+    ],
+    "subtitle": "subtitles.mob.snareling_hurt"
+  },
+  "entity.snareling.death": {
+    "sounds": [
+      "fountain_of_end:mob/snareling/snareling_death_1",
+      "fountain_of_end:mob/snareling/snareling_death_2",
+      "fountain_of_end:mob/snareling/snareling_death_3",
+      "fountain_of_end:mob/snareling/snareling_death_4"
+    ],
+    "subtitle": "subtitles.mob.snareling_death"
+  }
+}

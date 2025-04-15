@@ -23,6 +23,8 @@ public class ItemModelGenerator extends ItemModelProvider {
     protected void registerModels() {
         this.basicItem(ModBlocks.FOUNTAIN_OF_END.get().asItem());
         this.basicItem(ModItems.VOID_BUCKET.get());
+        this.spawnEgg(ModItems.WATCHLING_SPAWNEGG.get());
+        this.spawnEgg(ModItems.SNARELING_SPAWNEGG.get());
     }
 
     public ItemModelBuilder itemBlockFlat(Block block) {

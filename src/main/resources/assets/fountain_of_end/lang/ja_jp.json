@@ -1,0 +1,18 @@
+{
+  "itemGroup.fountain_of_end": "エンドの泉",
+  "block.fountain_of_end.fountain_of_end": "エンドの泉",
+  "item.fountain_of_end.void_bucket": "虚無入りバケツ",
+  "item.fountain_of_end.watchling_spawn_egg": "ウォッチリングのスポーンエッグ",
+  "item.fountain_of_end.snareling_spawn_egg": "スネアリングのスポーンエッグ",
+  "entity.fountain_of_end.watchling": "ウォッチリング",
+  "entity.fountain_of_end.snareling": "スネアリング",
+  "entity.fountain_of_end.snare_ball": "スネアボール",
+  "entity.fountain_of_end.snare_web": "スネアウェブ",
+  "subtitles.mob.watchling_idle": "ウォッチリングがうねる",
+  "subtitles.mob.watchling_hurt": "ウォッチリングがダメージをうける",
+  "subtitles.mob.watchling_death": "ウォッチリングが死ぬ",
+  "subtitles.mob.watchling_attack": "ウォッチリングが攻撃する",
+  "subtitles.mob.snareling_idle": "スネアリングがうねる",
+  "subtitles.mob.snareling_hurt": "スネアリングがダメージをうける",
+  "subtitles.mob.snareling_death": "スネアリングが死ぬ"
+}

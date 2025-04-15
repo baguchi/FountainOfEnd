@@ -22,7 +22,9 @@ public class ModCreativeTabs {
                 output.acceptAll(Stream.of(
                         ModBlocks.FOUNTAIN_OF_END.asItem(),
                         ModItems.VOID_BUCKET.get(),
-                        ModItems.WATCHLING_SPAWNEGG.get()
+                        ModItems.WATCHLING_SPAWNEGG.get(),
+                        ModItems.SNARELING_SPAWNEGG.get()
+
                 ).map(sup -> {
                     return sup.getDefaultInstance();
                 }).toList());

@@ -1,7 +1,10 @@
 package baguchi.end_fountain.register;
 
 import baguchi.end_fountain.FountainOfEnd;
+import baguchi.end_fountain.entity.Snareling;
 import baguchi.end_fountain.entity.Watchling;
+import baguchi.end_fountain.entity.projectile.SnareBall;
+import baguchi.end_fountain.entity.projectile.SnareWebEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -28,14 +31,31 @@ public class ModEntities {
                     .eyeHeight(1.65F)
                     .ridingOffset(-0.7F)
                     .build(FountainOfEnd.MODID + ":watchling"));
+    public static final Supplier<EntityType<Snareling>> SNARELING =
+            ENTITY_TYPES.register("snareling", () -> EntityType.Builder.of(Snareling::new, MobCategory.MONSTER)
+                    .sized(0.6F, 1.9F)
+                    .eyeHeight(1.8F)
+                    .ridingOffset(-0.7F)
+                    .build(FountainOfEnd.MODID + ":snareling"));
+
+    public static final Supplier<EntityType<SnareBall>> SNARE_BALL = ENTITY_TYPES.register("snare_ball", () -> EntityType.Builder.<SnareBall>of(SnareBall::new, MobCategory.MISC)
+            .sized(0.3F, 0.3F).updateInterval(30).build(FountainOfEnd.MODID + ":snare_ball"));
+    public static final Supplier<EntityType<SnareWebEntity>> SNARE_WEB = ENTITY_TYPES.register("snare_web", () -> EntityType.Builder.<SnareWebEntity>of(SnareWebEntity::new, MobCategory.MISC)
+            .sized(3F, 0.1F).updateInterval(10).build(FountainOfEnd.MODID + ":snare_web"));
+
+
+
 
     @SubscribeEvent
     public static void registerEntity(EntityAttributeCreationEvent event) {
         event.put(WATCHLING.get(), Watchling.createAttributes().build());
+        event.put(SNARELING.get(), Snareling.createAttributes().build());
+        event.put(SNARE_WEB.get(), SnareWebEntity.createAttributes().build());
     }
 
     @SubscribeEvent
     public static void registerSpawnPlacement(RegisterSpawnPlacementsEvent event) {
         event.register(WATCHLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(SNARELING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }
