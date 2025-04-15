@@ -45,12 +45,12 @@ public abstract class FountainBaseSpawner implements IOwnedSpawner {
     private double oSpin;
     private int minSpawnDelay = 400;
     private int maxSpawnDelay = 600;
-    private int spawnCount = 24;
+    private int spawnCount = 12;
     @Nullable
     private Entity displayEntity;
     private int maxNearbyEntities = 6;
     private int requiredPlayerRange = 20;
-    private int spawnRange = 10;
+    private int spawnRange = 8;
 
     public FountainBaseSpawner() {
     }
@@ -155,7 +155,7 @@ public abstract class FountainBaseSpawner implements IOwnedSpawner {
                         entity.moveTo(entity.getX(), entity.getY(), entity.getZ(), randomsource.nextFloat() * 360.0F, 0.0F);
                         if (entity instanceof Mob) {
                             Mob mob = (Mob) entity;
-                            if (mob.checkSpawnObstruction(serverLevel)) {
+                            if (!mob.checkSpawnObstruction(serverLevel)) {
                                 continue;
                             }
 

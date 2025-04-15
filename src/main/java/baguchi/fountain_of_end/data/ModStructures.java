@@ -43,7 +43,7 @@ public class ModStructures {
                                 .build(),
                         pools.getOrThrow(ModStructures.END_FOUNTAIN_MAIN),
                         6,
-                        ConstantHeight.of(VerticalAnchor.absolute(2)),
+                        ConstantHeight.of(VerticalAnchor.absolute(0)),
                         false,
                         Heightmap.Types.WORLD_SURFACE_WG
                 )
