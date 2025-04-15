@@ -60,9 +60,9 @@ public class ModStructures {
         HolderGetter<StructureProcessorList> processors = context.lookup(Registries.PROCESSOR_LIST);
 
         context.register(END_FOUNTAIN_MAIN, new StructureTemplatePool(emptyPool, ImmutableList.of(
-                Pair.of(StructurePoolElement.legacy(name("end_fountain/fountain_1")), 3),
-                Pair.of(StructurePoolElement.legacy(name("end_fountain/fountain_2")), 2),
-                Pair.of(StructurePoolElement.legacy(name("end_fountain/fountain_3")), 2)
+                Pair.of(StructurePoolElement.legacy(name("end_fountain/fountain_1")), 2),
+                Pair.of(StructurePoolElement.legacy(name("end_fountain/fountain_2")), 1),
+                Pair.of(StructurePoolElement.legacy(name("end_fountain/fountain_3")), 1)
         ), StructureTemplatePool.Projection.RIGID));
     }
 
