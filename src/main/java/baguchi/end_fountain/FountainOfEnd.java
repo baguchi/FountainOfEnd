@@ -33,6 +33,7 @@ public class FountainOfEnd
 
         ModItems.ITEMS.register(modEventBus);
         ModBlockEntitys.BLOCK_ENTITIES.register(modEventBus);
+        ModEntities.ENTITY_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (EndFountain) to respond directly to events.

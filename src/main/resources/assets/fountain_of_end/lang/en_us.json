@@ -1,5 +1,6 @@
 {
   "itemGroup.fountain_of_end": "Fountain Of End",
   "block.fountain_of_end.fountain_of_end": "Fountain Of End",
-  "item.fountain_of_end.void_bucket": "Void Bucket"
+  "item.fountain_of_end.void_bucket": "Void Bucket",
+  "item.fountain_of_end.watchling_spawn_egg": "Watchling SpawnEgg"
 }
