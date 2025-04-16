@@ -20,6 +20,6 @@ public class BiomeTagGenerator extends BiomeTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider p_256380_) {
         tag(Tags.Biomes.IS_END).add(ModBiomes.OVERWORLD_END);
-        tag(ModTags.Biomes.END_FOUNTAIN).addTag(Tags.Biomes.IS_OVERWORLD).remove(Tags.Biomes.IS_UNDERGROUND).remove(Tags.Biomes.IS_OCEAN);
+        tag(ModTags.Biomes.END_FOUNTAIN).addTag(Tags.Biomes.IS_OVERWORLD).remove(Tags.Biomes.IS_UNDERGROUND).remove(Tags.Biomes.IS_OCEAN).remove(Tags.Biomes.IS_RIVER);
     }
 }

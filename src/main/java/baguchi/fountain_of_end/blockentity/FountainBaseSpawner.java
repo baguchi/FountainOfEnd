@@ -45,7 +45,7 @@ public abstract class FountainBaseSpawner implements IOwnedSpawner {
     private double oSpin;
     private int minSpawnDelay = 400;
     private int maxSpawnDelay = 600;
-    private int spawnCount = 12;
+    private int spawnCount = 6;
     @Nullable
     private Entity displayEntity;
     private int maxNearbyEntities = 6;
@@ -160,7 +160,7 @@ public abstract class FountainBaseSpawner implements IOwnedSpawner {
                             }
 
                             boolean flag1 = spawndata.getEntityToSpawn().size() == 1 && spawndata.getEntityToSpawn().contains("id", 8);
-                            EventHooks.finalizeMobSpawnSpawner(mob, serverLevel, serverLevel.getCurrentDifficultyAt(entity.blockPosition()), MobSpawnType.SPAWNER, (SpawnGroupData) null, this, flag1);
+                            EventHooks.finalizeMobSpawnSpawner(mob, serverLevel, serverLevel.getCurrentDifficultyAt(entity.blockPosition()), MobSpawnType.EVENT, (SpawnGroupData) null, this, flag1);
                             Optional<EquipmentTable> var10000 = spawndata.getEquipment();
                             Objects.requireNonNull(mob);
                             var10000.ifPresent(mob::equip);
