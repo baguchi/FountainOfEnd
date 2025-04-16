@@ -1,6 +1,7 @@
 {
   "remove": [
-    "#c:is_underground"
+    "#c:is_underground",
+    "#c:is_ocean"
   ],
   "values": [
     "#c:is_overworld"

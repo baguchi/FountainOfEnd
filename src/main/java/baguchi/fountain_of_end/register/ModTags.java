@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
 
 public class ModTags {
     public static class Biomes {
@@ -14,4 +15,14 @@ public class ModTags {
             return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(FountainOfEnd.MODID, name));
         }
     }
+
+    public static class Blocks {
+        public static final TagKey<Block> MOVE_SPREAD = create("move_spread");
+        public static final TagKey<Block> REPLACEABLE_TO_END = create("replaceable_to_end");
+
+        private static TagKey<Block> create(String p_203847_) {
+            return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(FountainOfEnd.MODID, p_203847_));
+        }
+    }
+
 }

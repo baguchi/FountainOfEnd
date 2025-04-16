@@ -1,6 +1,7 @@
 package baguchi.fountain_of_end.data;
 
 import baguchi.fountain_of_end.FountainOfEnd;
+import baguchi.fountain_of_end.register.ModBiomes;
 import baguchi.fountain_of_end.register.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -18,6 +19,7 @@ public class BiomeTagGenerator extends BiomeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider p_256380_) {
-        tag(ModTags.Biomes.END_FOUNTAIN).addTag(Tags.Biomes.IS_OVERWORLD).remove(Tags.Biomes.IS_UNDERGROUND);
+        tag(Tags.Biomes.IS_END).add(ModBiomes.OVERWORLD_END);
+        tag(ModTags.Biomes.END_FOUNTAIN).addTag(Tags.Biomes.IS_OVERWORLD).remove(Tags.Biomes.IS_UNDERGROUND).remove(Tags.Biomes.IS_OCEAN);
     }
 }

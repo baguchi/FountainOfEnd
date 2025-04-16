@@ -1,6 +1,7 @@
 package baguchi.fountain_of_end.data;
 
 import baguchi.fountain_of_end.FountainOfEnd;
+import baguchi.fountain_of_end.register.ModBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +19,8 @@ public class RegistryDataGenerator extends DatapackBuiltinEntriesProvider {
             })
             .add(Registries.STRUCTURE, ModStructures::bootstrapStructures)
             .add(Registries.STRUCTURE_SET, ModStructures::bootstrapSets)
-            .add(Registries.TEMPLATE_POOL, ModStructures::bootstrapPools);
+            .add(Registries.TEMPLATE_POOL, ModStructures::bootstrapPools)
+            .add(Registries.BIOME, ModBiomes::bootstrap);
 
 
     public RegistryDataGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

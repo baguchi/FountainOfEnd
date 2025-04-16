@@ -2,12 +2,14 @@ package baguchi.fountain_of_end.blockentity;
 
 import baguchi.fountain_of_end.register.ModBlockEntitys;
 import baguchi.fountain_of_end.register.ModBlocks;
+import baguchi.fountain_of_end.util.EndSpreaderUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SpawnData;
@@ -22,6 +24,9 @@ import java.util.List;
 import static baguchi.fountain_of_end.block.FountainOfEndBlock.putEntity;
 
 public class FountainOfEndBlockEntity extends BlockEntity implements Spawner {
+
+    private final EndSpreaderUtil endSpreaderUtil = EndSpreaderUtil.createLevelSpreader();
+
     private final FountainBaseSpawner spawner = new FountainBaseSpawner() {
         @Override
         public void broadcastEvent(Level p_155767_, BlockPos p_155768_, int p_155769_) {
@@ -45,10 +50,14 @@ public class FountainOfEndBlockEntity extends BlockEntity implements Spawner {
 
 
     public int tick;
+    public int refreshTick;
     public FountainOfEndBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntitys.FOUNTAIN_OF_END.get(), pos, blockState);
     }
 
+    public EndSpreaderUtil getEndSpreaderUtil() {
+        return endSpreaderUtil;
+    }
 
     public static void tick(Level level, BlockPos pos, BlockState state, FountainOfEndBlockEntity blockEntity) {
         boolean flag = false;
@@ -67,6 +76,18 @@ public class FountainOfEndBlockEntity extends BlockEntity implements Spawner {
             blockEntity.spawner.clientTick(level, pos);
         } else {
             blockEntity.spawner.serverTick((ServerLevel) level, pos);
+            if (level.getDifficulty() != Difficulty.PEACEFUL) {
+                if (blockEntity.refreshTick++ > 1200) {
+                    blockEntity.refreshTick = 0;
+                    blockEntity.getEndSpreaderUtil().clear();
+                    for (int i = 0; i < 5; i++) {
+                        blockEntity.getEndSpreaderUtil().addCursors(pos.below(), 20);
+                    }
+                }
+            }
+        }
+        if (level.getDifficulty() != Difficulty.PEACEFUL) {
+            blockEntity.endSpreaderUtil.updateCursors(level, blockEntity.getBlockPos().below(), level.random, true);
         }
     }
 
@@ -95,12 +116,16 @@ public class FountainOfEndBlockEntity extends BlockEntity implements Spawner {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         this.spawner.load(this.level, this.worldPosition, tag);
+        endSpreaderUtil.load(tag);
+        this.refreshTick = tag.getInt("RefreshTick");
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         this.spawner.save(tag);
+        endSpreaderUtil.save(tag);
+        tag.putInt("RefreshTick", this.refreshTick);
     }
 
     @Override

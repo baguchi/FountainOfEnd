@@ -79,6 +79,8 @@ public class FountainOfEndBlock extends BaseEntityBlock {
 
             spawnerblockentity.getSpawner().setEntityIds(list);
             spawnerblockentity.setChanged();
+
+
         }
     }
 
