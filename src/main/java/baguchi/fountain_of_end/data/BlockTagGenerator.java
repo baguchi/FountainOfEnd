@@ -21,7 +21,7 @@ public class BlockTagGenerator extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider p_256380_) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.FOUNTAIN_OF_END.get());
         this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.FOUNTAIN_OF_END.get());
-        this.tag(ModTags.Blocks.MOVE_SPREAD).add(Blocks.END_STONE).addTag(ModTags.Blocks.REPLACEABLE_TO_END);
-        this.tag(ModTags.Blocks.REPLACEABLE_TO_END).addTag(BlockTags.ENDERMAN_HOLDABLE);
+        this.tag(ModTags.Blocks.MOVE_SPREAD).add(ModBlocks.VOID.get()).add(Blocks.END_STONE).addTag(ModTags.Blocks.REPLACEABLE_TO_END);
+        this.tag(ModTags.Blocks.REPLACEABLE_TO_END).add(Blocks.WATER).addTag(BlockTags.ENDERMAN_HOLDABLE);
     }
 }

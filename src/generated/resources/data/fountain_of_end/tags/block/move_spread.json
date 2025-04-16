@@ -1,0 +1,7 @@
+{
+  "values": [
+    "fountain_of_end:void",
+    "minecraft:end_stone",
+    "#fountain_of_end:replaceable_to_end"
+  ]
+}

@@ -77,8 +77,8 @@ public class FountainOfEndBlockEntity extends BlockEntity implements Spawner {
         } else {
             blockEntity.spawner.serverTick((ServerLevel) level, pos);
             if (level.getDifficulty() != Difficulty.PEACEFUL) {
-                if (blockEntity.refreshTick++ > 1200) {
-                    blockEntity.refreshTick = 0;
+                if (blockEntity.refreshTick-- <= 0) {
+                    blockEntity.refreshTick = 1200;
                     blockEntity.getEndSpreaderUtil().clear();
                     for (int i = 0; i < 5; i++) {
                         blockEntity.getEndSpreaderUtil().addCursors(pos.below(), 20);

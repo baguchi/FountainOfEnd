@@ -1,6 +1,7 @@
 package baguchi.fountain_of_end.util;
 
 import baguchi.fountain_of_end.register.ModBiomes;
+import baguchi.fountain_of_end.register.ModBlocks;
 import baguchi.fountain_of_end.register.ModTags;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
@@ -69,6 +70,14 @@ public interface EndBehaviour {
         if (p_222366_.getBlock() instanceof BushBlock) {
 
             BlockState blockstate = Blocks.AIR.defaultBlockState();
+
+            p_222364_.setBlock(p_222365_, blockstate, 3);
+            p_222364_.levelEvent(2001, p_222365_, Block.getId(blockstate));
+            changeBiome(p_222364_, p_222365_, p_222366_);
+            return true;
+        } else if (p_222366_.is(Blocks.WATER)) {
+
+            BlockState blockstate = ModBlocks.VOID.get().defaultBlockState();
 
             p_222364_.setBlock(p_222365_, blockstate, 3);
             p_222364_.levelEvent(2001, p_222365_, Block.getId(blockstate));
